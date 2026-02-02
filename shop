@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>Darc Pay Shop</title>
+<style>
+body { margin:0; background:#0b0b12; font-family:Arial,sans-serif; color:white; text-align:center; }
+header { background:#0f172a; padding:15px 0; display:flex; justify-content:center; align-items:center; box-shadow:0 0 20px #22c55e; }
+header img { width:80px; height:80px; margin-right:10px; }
+header span { font-size:24px; font-weight:bold; color:#22c55e; }
+.shop { margin:40px auto; display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1000px; }
+.card { background:#111827; border-radius:15px; padding:20px; width:220px; box-shadow:0 0 15px rgba(34,197,94,0.3); transition:0.3s; }
+.card:hover { transform:scale(1.03); box-shadow:0 0 25px #22c55e; }
+.card h3 { margin:0; }
+.price { margin:10px 0; color:#38bdf8; font-size:18px; }
+button { width:100%; padding:10px; border:none; border-radius:10px; background:#22c55e; color:white; font-size:16px; cursor:pointer; }
+button:hover { background:#16a34a; }
+footer { margin-top:50px; opacity:0.5; font-size:13px; }
+h2 { width:100%; text-align:left; padding-left:50px; color:#22c55e; margin-bottom:10px; }
+.tabs { display:flex; justify-content:center; margin:20px 0; gap:20px; }
+.tab { padding:10px 20px; background:#111827; border-radius:10px; cursor:pointer; transition:0.3s; }
+.tab:hover { background:#1e293b; }
+.tab.active { background:#22c55e; color:white; }
+img.game-logo { width:50px; vertical-align:middle; margin-left:10px; }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="darcpay.png" alt="Darc Pay Logo">
+  <span>Darc Pay</span>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="showShop('ff')">Free Fire</div>
+  <div class="tab" onclick="showShop('brawl')">Brawl Stars</div>
+</div>
+
+<div class="shop" id="shop"></div>
+
+<footer>
+© 2026 Elfik Team • Powered by Darc Pay
+</footer>
+
+<script>
+function showShop(game){
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  if(game==='ff') tabs[0].classList.add('active');
+  if(game==='brawl') tabs[1].classList.add('active');
+
+  let html = "";
+  if(game==='ff'){
+    html += `<h2>Free Fire 💎 <img class="game-logo" src="ff.png" alt="Free Fire Logo"></h2>
+    <div class="card"><h3>110 Ալմազ</h3><div class="price">600 դրամ</div><button onclick="buy('Free Fire | 110 Ալմազ')">Գնել</button></div>
+    <div class="card"><h3>341 Ալմազ</h3><div class="price">1500 դրամ</div><button onclick="buy('Free Fire | 341 Ալմազ')">Գնել</button></div>
+    <div class="card"><h3>572 Ալմազ</h3><div class="price">2500 դրամ</div><button onclick="buy('Free Fire | 572 Ալմազ')">Գնել</button></div>
+    <div class="card"><h3>1166 Ալմազ</h3><div class="price">5100 դրամ</div><button onclick="buy('Free Fire | 1166 Ալմազ')">Գնել</button></div>
+    <div class="card"><h3>2398 Ալմազ</h3><div class="price">12600 դրամ</div><button onclick="buy('Free Fire | 2398 Ալմազ')">Գնել</button></div>
+
+    <h2>Վաուչերներ 🎟️</h2>
+    <div class="card"><h3>1 շաբաթ վաուչեր լայթ</h3><div class="price">400 դրամ</div><button onclick="buy('Free Fire | 1 շաբաթ վաուչեր լայթ')">Գնել</button></div>
+    <div class="card"><h3>1 շաբաթ վաուչեր</h3><div class="price">900 դրամ</div><button onclick="buy('Free Fire | 1 շաբաթ վաուչեր')">Գնել</button></div>
+    <div class="card"><h3>1 ամիս վաուչեր</h3><div class="price">3600 դրամ</div><button onclick="buy('Free Fire | 1 ամիս վաուչեր')">Գնել</button></div>
+
+    <h2>Evo Access 🔑</h2>
+    <div class="card"><h3>3 օր</h3><div class="price">400 դրամ</div><button onclick="buy('Free Fire | Evo Access 3օր')">Գնել</button></div>
+    <div class="card"><h3>7 օր</h3><div class="price">600 դրամ</div><button onclick="buy('Free Fire | Evo Access 7օր')">Գնել</button></div>
+    <div class="card"><h3>30 օր</h3><div class="price">1500 դրամ</div><button onclick="buy('Free Fire | Evo Access 30օր')">Գնել</button></div>
+
+    <h2>Պռոպուսկ / Պրաքաչկաներ ⚡</h2>
+    <div class="card"><h3>Պռոպուսկ պռակաչկա</h3><div class="price">400 դրամ</div><button onclick="buy('Free Fire | Պռոպուսկ պռակաչկա')">Գնել</button></div>
+    <div class="card"><h3>Պռոպուսկ Պ. 6 LVL</h3><div class="price">300 դրամ</div><button onclick="buy('Free Fire | Պռոպուսկ Պ. 6 LVL')">Գնել</button></div>
+    <div class="card"><h3>Պռոպուսկ Պ. 15 LVL</h3><div class="price">400 դրամ</div><button onclick="buy('Free Fire | Պռոպուսկ Պ. 15 LVL')">Գնել</button></div>
+    <div class="card"><h3>Պռոպուսկ Պ. 20 LVL</h3><div class="price">400 դրամ</div><button onclick="buy('Free Fire | Պռոպուսկ Պ. 20 LVL')">Գնել</button></div>
+    <div class="card"><h3>Պռոպուսկ Պ. 25 LVL</h3><div class="price">400 դրամ</div><button onclick="buy('Free Fire | Պռոպուսկ Պ. 25 LVL')">Գնել</button></div>
+    <div class="card"><h3>Պռոպուսկ Պ. 30 LVL</h3><div class="price">500 դրամ</div><button onclick="buy('Free Fire | Պռոպուսկ Պ. 30 LVL')">Գնել</button></div>
+    `;
+  } else if(game==='brawl'){
+    html += `<h2>Brawl Stars 💥 <img class="game-logo" src="brawl.png" alt="Brawl Logo"></h2>
+    <div class="card"><h3>33 գեմ</h3><div class="price">600 դրամ</div><button onclick="buy('Brawl Stars | 33 գեմ')">Գնել</button></div>
+    <div class="card"><h3>88 գեմ</h3><div class="price">1400 դրամ</div><button onclick="buy('Brawl Stars | 88 գեմ')">Գնել</button></div>
+    <div class="card"><h3>187 գեմ</h3><div class="price">2800 դրամ</div><button onclick="buy('Brawl Stars | 187 գեմ')">Գնել</button></div>
+    <div class="card"><h3>396 գեմ</h3><div class="price">5600 դրամ</div><button onclick="buy('Brawl Stars | 396 գեմ')">Գնել</button></div>
+    <div class="card"><h3>1045 գեմ</h3><div class="price">13800 դրամ</div><button onclick="buy('Brawl Stars | 1045 գեմ')">Գնել</button></div>
+    <div class="card"><h3>2200 գեմ</h3><div class="price">27600 դրամ</div><button onclick="buy('Brawl Stars | 2200 գեմ')">Գնել</button></div>
+    `;
+  }
+  document.getElementById("shop").innerHTML = html;
+}
+
+// Փոխված buy ֆունկցիա՝ ուղիղ @darcpayadmins Telegram
+function buy(item){
+  window.open("https://t.me/darcpayadmins?start=" + encodeURIComponent(item), "_blank");
+}
+
+document.addEventListener("DOMContentLoaded", ()=>{ showShop('ff'); });
+</script>
+
+</body>
+</html>
